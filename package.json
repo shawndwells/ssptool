@@ -3,6 +3,8 @@
   "version": "0.4.4",
   "private": true,
   "scripts": {
+    "run": "node main.js server",
+    "start": "node main.js server",
     "test": "mocha"
   },
   "bin": {
