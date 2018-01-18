@@ -61,8 +61,8 @@ program
       , startServer = (config, db) => {
           logger.info('Initializing...');
           app.initialize(config, db);
-          logger.info('Listening on http://localhost:%d', options.port);
-          server.listen(options.port, () => logger.info('Ready.'));
+          logger.info('Listening on http://localhost:%d', process.env.PORT);
+          server.listen(process.env.PORT, () => logger.info('Ready.'));
         };
 
     server.on('error', logError);
