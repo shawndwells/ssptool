@@ -15,6 +15,9 @@ var program = require('commander')
     , document: require('./commands/document')
     };
 
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
+    ip	 = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP   || '0.0.0.0';
+
 program.version(package.version);
 
 program.option('-c, --config <file>','path to configuration file');
@@ -52,11 +55,8 @@ function loadDatabase (cb) {
  */
 program
   .command('server')
-  .option('-p --port <port>', 'Server port', port , parseInt)
   .description('Run preview server')
   .action(function (options) {
-
-   var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
     var app = require('./app')
       , http = require('http')
@@ -64,8 +64,8 @@ program
       , startServer = (config, db) => {
           logger.info('Initializing...');
           app.initialize(config, db);
-          logger.info('Listening on http://localhost:%d', port);
-          server.listen(process.env.PORT, () => logger.info('Ready.'));
+          logger.info('Listening on http://%s:%s', ip, port);
+          server.listen(ip, port, () => logger.info('Ready.'));
         };
 
     server.on('error', logError);
