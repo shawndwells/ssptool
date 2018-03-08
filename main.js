@@ -52,16 +52,19 @@ function loadDatabase (cb) {
  */
 program
   .command('server')
-  .option('-p --port <port>', 'Server port', 3000, parseInt)
+  .option('-p --port <port>', 'Server port', port , parseInt)
   .description('Run preview server')
   .action(function (options) {
+
+   var port = process.env.OPENSHIFT_NODEJS_PORT || 8080;
+
     var app = require('./app')
       , http = require('http')
       , server = http.createServer(app)
       , startServer = (config, db) => {
           logger.info('Initializing...');
           app.initialize(config, db);
-          logger.info('Listening on http://localhost:%d', process.env.PORT);
+          logger.info('Listening on http://localhost:%d', port);
           server.listen(process.env.PORT, () => logger.info('Ready.'));
         };
 
