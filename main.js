@@ -16,7 +16,7 @@ var program = require('commander')
     };
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip	 = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP   || '0.0.0.0';
+    ip	 = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP   || process.env.SECURITYCENTRAL_SSPTOOL_SERVICE_HOST   || '0.0.0.0';
 
 program.version(package.version);
 
@@ -64,6 +64,7 @@ program
       , startServer = (config, db) => {
           logger.info('Initializing...');
           app.initialize(config, db);
+          console.log((new Date()) + ' SSP Tool is listening on http://%s:%s', ip, port);
           logger.info('Listening on http://%s:%s', ip, port);
           server.listen(ip, port, () => logger.info('Ready.'));
         };
