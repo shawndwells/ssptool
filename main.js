@@ -1,6 +1,6 @@
 /**
- * @file ssptool CLI main entry point.
- */
+ *  * @file ssptool CLI main entry point.
+ *   */
 
 var program = require('commander')
   , package = require('./package.json')
@@ -15,9 +15,6 @@ var program = require('commander')
     , document: require('./commands/document')
     };
 
-var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip	 = process.env.IP   || process.env.OPENSHIFT_NODEJS_IP   || process.env.SECURITYCENTRAL_SSPTOOL_SERVICE_HOST   || '0.0.0.0';
-
 program.version(package.version);
 
 program.option('-c, --config <file>','path to configuration file');
@@ -25,14 +22,14 @@ program.option('-d, --datadir <dir>','path to opencontrols data','./opencontrols
 program.option('-m, --docdir <dir>','path to markdown documents','./markdowns');
 
 /** Log an error.
- * @param {Error} err
- */
+ *  * @param {Error} err
+ *   */
 function logError(err) { logger.error(err.message); }
 
 /**
- * Load configuration from file if --config specified or ssptool.yaml exists,
- * or from command-line arguments / program defaults otherwise.
- */
+ *  * Load configuration from file if --config specified or ssptool.yaml exists,
+ *   * or from command-line arguments / program defaults otherwise.
+ *    */
 function loadConfig (cb) {
     var defaultFile = 'ssptool.yaml'
       , defaultConfig = { datadir: program.datadir, docdir: program.docdir }
@@ -52,21 +49,20 @@ function loadDatabase (cb) {
 }
 
 /** Launch HTTP server
- */
+ *  */
 program
   .command('server')
+  .option('-p --port <port>', 'Server port', 3000, parseInt)
   .description('Run preview server')
   .action(function (options) {
-
     var app = require('./app')
       , http = require('http')
       , server = http.createServer(app)
       , startServer = (config, db) => {
           logger.info('Initializing...');
           app.initialize(config, db);
-          console.log((new Date()) + ' SSP Tool is listening on http://%s:%s', ip, port);
-          logger.info('Listening on http://%s:%s', ip, port);
-          server.listen(ip, port, () => logger.info('Ready.'));
+          logger.info('Listening on http://localhost:%d', options.port);
+          server.listen(options.port, () => logger.info('Ready.'));
         };
 
     server.on('error', logError);
