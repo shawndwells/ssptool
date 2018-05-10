@@ -7,6 +7,7 @@ metadata:
 
 components:
 #    - ./SI-System_and_Information_Integrity
+#    - ./../../ComplianceAsCode/redhat-openstack-platform-13
 
 dependencies:
   standards:
