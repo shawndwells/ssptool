@@ -15,16 +15,17 @@ dependencies:
     - url: https://github.com/opencontrol/standards
       revision: master
   certifications:
-    - url: https://github.com/SecurityCentral/opencontrol-certifications
-      revision: master
-    - url: https://github.com/opencontrol/FedRAMP-Certifications
+    - url: https://github.com/opencontrol/certifications
       revision: master
   systems:
     - url: https://github.com/SecurityCentral/template-system-process-controls
       revision: opencontrol
-    - url: https://github.com/ComplianceAsCode/redhat-openstack-platform-13
+    - url: https://github.com/ComplianceAsCode/redhat
+      contextdir: openstack-platform-13
       revision: opencontrol
-    - url: https://github.com/ComplianceAsCode/redhat-openshift-v3
+    - url: https://github.com/ComplianceAsCode/redhat
+      contextdir: openshift-container-platform-13
       revision: opencontrol
-    - url: https://github.com/ComplianceAsCode/redhat-identity-management
+    - url: https://github.com/ComplianceAsCode/redhat
+      contextdir: identity-management
       revision: opencontrol
