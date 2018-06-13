@@ -21,11 +21,11 @@ dependencies:
     - url: https://github.com/SecurityCentral/template-system-process-controls
       revision: opencontrol
     - url: https://github.com/ComplianceAsCode/redhat
+      contextdir: openstack-platform-13
       revision: opencontrol
-      contextdir: osp13
     - url: https://github.com/ComplianceAsCode/redhat
+      contextdir: openshift-container-platform-13
       revision: opencontrol
-      contextdir: ocp3
     - url: https://github.com/ComplianceAsCode/redhat
+      contextdir: identity-management
       revision: opencontrol
-      contextdir: idm
