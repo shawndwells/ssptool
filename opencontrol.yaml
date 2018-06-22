@@ -8,7 +8,8 @@ metadata:
 components:
 #    - ./SI-System_and_Information_Integrity
 #    - ./../../ComplianceAsCode/redhat-openstack-platform-13
-#     - ./../../ComplianceAsCode/redhat-openshift-v3
+#    - ./../../ComplianceAsCode/redhat-openshift-v3
+#     - ./../../ComplianceAsCode/redhat/ansible-tower
 
 dependencies:
   standards:
@@ -28,4 +29,7 @@ dependencies:
       revision: opencontrol
     - url: https://github.com/ComplianceAsCode/redhat
       contextdir: idm
+      revision: opencontrol
+    - url: https://github.com/ComplianceAsCode/redhat
+      contextdir: ansible-tower
       revision: opencontrol
