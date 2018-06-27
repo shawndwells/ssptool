@@ -6,10 +6,9 @@ metadata:
     - Shawn Wells <shawn@redhat.com>
 
 components:
-#    - ./SI-System_and_Information_Integrity
 #    - ./../../ComplianceAsCode/redhat-openstack-platform-13
 #    - ./../../ComplianceAsCode/redhat-openshift-v3
-#     - ./../../ComplianceAsCode/redhat/ansible-tower
+#    - ./../../ComplianceAsCode/redhat/ansible-tower
 
 dependencies:
   standards:
@@ -19,8 +18,8 @@ dependencies:
     - url: https://github.com/opencontrol/certifications
       revision: master
   systems:
-    - url: https://github.com/SecurityCentral/template-system-process-controls
-      revision: opencontrol
+#    - url: https://github.com/SecurityCentral/template-system-process-controls
+#      revision: opencontrol
     - url: https://github.com/ComplianceAsCode/redhat
       contextdir: osp13
       revision: opencontrol
