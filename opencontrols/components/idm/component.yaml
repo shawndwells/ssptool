@@ -1,11 +1,19 @@
 ---
 documentation_complete: false
-name: Ansible Tower
+name: Red Hat Identity Management
 schema_version: 3.0.0
 satisfies:
 ##
 ## BEGINNING OF:
 ## ACCESS CONTROL
+##
+## Reminder of "implementation_status" codes:
+##  - implementation_status: unsatisfied
+##  - implementation_status: unknown
+##  - implementation_status: planned
+##  - implementation_status: partial
+##  - implementation_status: complete
+##  - implementation_status: none
 ##
 
 - control_key: AC-1
@@ -14,9 +22,6 @@ satisfies:
   implementation_status: not applicable
   narrative:
     - text: ''
- #   - text: |
- #       'AC-1 is an organizational control outside the scope of
- #       Ansible Tower.'
 
 - control_key: AC-2
   standard_key: NIST-800-53
@@ -24,121 +29,58 @@ satisfies:
   implementation_status: not applicable
   narrative:
     - text: ''
-#    - text: |
-#        'AC-2 is an organizational control outside the scope of
-#        Ansible Tower configuration. Technical enablement of
-#        the organizational processes are covered in AC-2 subcontrols,
-#        such as AC-2(2) and AC-2(3).'
 
-- control_key: AC-2 (1)
+- control_key: AC-3
   standard_key: NIST-800-53
   covered_by: []
   implementation_status: planned
   narrative:
     - text: |
-        'Documentation for this requirement is being tracked on
-        GitHub:
+        'Documentation/guidance for satisfying this control is being
+        tracked on GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/465'
-
-- control_key: AC-3
-  standard_key: NIST-800-53
-  covered_by: []
-  implementation_status: complete
-  narrative:
-    - text: |
-        'There are three types of Tower users that can be assigned:
-
-        - Normal User
-        Normal Users have read and write access limited to the resources
-        (such as inventory, projects, and job templates) for which that user
-        has been granted the appropriate roles and privileges.
-
-        - System Auditor
-        Auditors implicitly inherit the read-only capability for all objects
-        within the Tower environment.
-
-        - System Adminisrator
-        A Tower System Administrator (also known as a Superuser) has admin,
-        read, and write privileges over the entire Tower installation. A
-        System Administrator is typically responsible for managing all
-        aspects of Tower and delegating responsibilities for day-to-day
-        work to various Users.
-
-        Ansible Tower uses role-based access control to provide the ability
-        to read, modify, and administer projects, inventories, job templates,
-        and other Ansible Tower elements. The role-based access control policies
-        can be defined per-user, or per user type as indicated above.
-
-        Additional detail can be found in the Ansible Tower documentation:
-
-        https://docs.ansible.com/ansible-tower/latest/html/userguide/users.html'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/2'
 
 - control_key: AC-7
   standard_key: NIST-800-53
   covered_by: []
-  implementation_status: partial
+  implementation_status: planned
   narrative:
     - key: a
       text: |
-        'Ansible Tower does not currently have the capability to enforce limits
-        on consecutive logon attempts.
+        'Documentation/guidance on satisfying this control is being
+        tracked on GitHub:
 
-        To satisfy this control an external authentication service, such
-        as Red Hat IdM, must be used. This control is not applicable to
-        Ansible Tower when an external authentication service is used.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/3'
     - key: b
       text: |
-        'Ansible Tower does not currently have the capability automatically
-        lock an account for an organizationally-defined time period, nor
-        does Ansible Tower have the capability to lock an account until
-        released by an administrator.
+        'Documentation/guiodance for this control is being
+        tracked on GitHub:
 
-        To satisfy those elemenets of this control an external
-        authentication service, such as Red Hat IdM, must be used.
-        Those two elements of this control are not applicable to
-        Ansible Tower when an external authentication service
-        is used.
-
-        Ansible Tower does not currently have the ability to delay
-        logon prompts according to an organizationally-defined delay
-        algorithm when the maximum number of unsuccessful attempts is
-        exceeded. Ansible Tower cannot be configured to perform
-        this functionality; delay of further logon prompts is a permanent
-        finding.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/4'
 
 - control_key: AC-8
   standard_key: NIST-800-53
   covered_by: []
-  implementation_status: complete
+  implementation_status: planned
   narrative:
     - key: a
       text: |
-        'Ansible Tower supports configuration of custom system use
-        notifications.
+        'Documentation/guidance for this control is being tracked on
+        GitHub:
 
-        From within the Tower web interface:
-
-        (1) Select "Settings", which is the gear icon in the top right corner
-
-        (2) Select "Configure Tower," which is the second icon in the third
-        row
-
-        (3) Select "User Interface"
-
-        (4) Enter your system use notification in the "CUSTOM LOGIN INFO"
-        field. Note breaks must use "\n"'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/5'
     - key: b
       text: |
-        'Custom system use notifications are displayed on the logon screen
-        prior to the "login" button. This is default, non-configurable
-        behavior.'
+        'Documentation/guidance for this control is being tracked on GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/6'
     - key: c
       text: |
-        'Ansible Tower does not differentiate logon screens between private and
-        publicly accessible instances. Custom system use notifications
-        for publicly accessible systems can be implemented using the
-        procedures from AC-8(a).'
+        'The banner text, as identified in AC-8(a), and banner acknowledgement,
+        as defined in AC-8(b), will be the same regardless of what network(s)
+        the Red Hat Identity Management console is accessed from. This control
+        is not applicable.'
 
 - control_key: AC-14
   standard_key: NIST-800-53
@@ -146,7 +88,7 @@ satisfies:
   implementation_status: complete
   narrative:
     - text: |
-        'Regardless of access mechanism, such as the Ansible Tower
+        'Regardless of access mechanism, such as the Red Hat Identity Management
         console, unauthenticated users will only be shown the
         system use notifications (as defined in AC-8) and login prompt. This is
         non-configurable behavior.
@@ -160,9 +102,6 @@ satisfies:
   implementation_status: not applicable
   narrative:
     - text: ''
-#     - text: |
-#        'This control reflects organizational procedures/policies, and is not
-#        applicable to the configuration of Ansible Tower.'
 
 - control_key: AC-18
   standard_key: NIST-800-53
@@ -170,9 +109,6 @@ satisfies:
   implementation_status: not applicable
   narrative:
     - text: ''
-#    - text: |
-#        'This control reflects organizational procedures/policies, and is not
-#        applicable to the configuration of Ansible Tower.'
 
 - control_key: AC-19
   standard_key: NIST-800-53
@@ -180,9 +116,6 @@ satisfies:
   implementation_status: not applicable
   narrative:
     - text: ''
-#    - text: |
-#        'This control reflects organizational procedures/policies, and is not
-#        applicable to the configuration of Ansible Tower.'
 
 - control_key: AC-20
   standard_key: NIST-800-53
@@ -190,9 +123,6 @@ satisfies:
   implementation_status: not applicable
   narrative:
     - text: ''
-#    - text: |
-#        'This control reflects organizational procedures/policies, and is not
-#        applicable to the configuration of Ansible Tower.'
 
 - control_key: AC-22
   standard_key: NIST-800-53
@@ -200,9 +130,6 @@ satisfies:
   implementation_status: not applicable
   narrative:
     - text: ''
-#    - text: |
-#        'This control reflects organizational procedures/policies, and is not
-#        applicable to the configuration of Ansible Tower.'
 ##
 ## BEGINNING OF:
 ## AWARENESS AND TRAINING CONTROLS
@@ -270,101 +197,8 @@ satisfies:
   implementation_status: complete
   narrative:
     - text: |
-        'By default Ansible Tower generates audit records containing
-        information that establishes what type of event occured,
-        when the event occured, where the event occured, the source
-        of the event, the outcome of the event, and the identity
-        of individuals or subjects associated with the event.
-
-        Ansible Tower cannot be configured to be out of compliance
-        with this control.
-
-        A sample audit record is provided below.
-
-        TYPE OF EVENT:
-        The "operation" field identifies the type of event recorded.
-        In this case, a new user was created.
-
-        WHEN THE EVENT OCCURED:
-        The "timestamp" field indicates the system time of
-        when the event occured. In this example the event happened
-        at 2018-06-19T00:46:45.337458Z.
-
-        WHERE THE EVENT OCCURED:
-        The "X-API-Node" field indicates where the event occured. In
-        this example, the host was tower.redhatgov.io.
-
-        SOURCE OF EVENT:
-        The "actor" field indicates the "alice" username initiated
-        this event.
-
-        OUTCOME OF EVENT:
-        The "changes" field indicate the user was created with
-        associated metadata such as first_name and last_name.
-
-        IDENTITY OF INDIVIDUALS/OBJECTS INVOLVED:
-        The "summary_fields" indicates an actor with the username "alice"
-        created a new user with the username "bob."
-
-        Full documentation of all available fields is
-        available in the Ansible Tower product documentation:
-
-        https://docs.ansible.com/ansible-tower/latest/html/towerapi/activity_stream.html
-
-
-        ---
-             HTTP 200 OK
-             Allow: GET, HEAD, OPTIONS
-             Content-Type: application/json
-             Vary: Accept
-             X-API-Node: tower.redhatgov.io
-             X-API-Time: 0.739s
-             ....
-             {
-                 "id": 25,
-                 "type": "activity_stream",
-                 "url": "/api/v1/activity_stream/25/",
-                 "related": {
-                     "user": [
-                         "/api/v1/users/4/"
-                     ],
-                     "actor": "/api/v1/users/1/"
-                 },
-                 "summary_fields": {
-                     "user": [
-                         {
-                             "username": "bob",
-                             "first_name": "Bob",
-                             "last_name": "Ross",
-                             "id": 4
-                         }
-                     ],
-                     "actor": {
-                         "username": "alice",
-                         "first_name": "Alice",
-                         "last_name": "Liddel",
-                         "id": 1
-                     }
-                 },
-                 "timestamp": "2018-06-19T00:46:45.337458Z",
-                 "operation": "create",
-                 "changes": {
-                     "username": "bob",
-                     "first_name": "Bob",
-                     "last_name": "Ross",
-                     "is_active": true,
-                     "id": 4,
-                     "is_superuser": false,
-                     "is_staff": false,
-                     "password": "hidden",
-                     "email": "bob@ross.com",
-                     "date_joined": "2018-06-19 00:46:45.314590+00:00"
-                 },
-                 "object1": "user",
-                 "object2": "",
-                 "object_association": ""
-             }
-        ---'
+        'Red Hat Identity Management audit records contain this information
+        by default. No additional configuration is required.'
 
 - control_key: AU-4
   standard_key: NIST-800-53
@@ -380,19 +214,29 @@ satisfies:
   narrative:
     - key: a
       text: |
-        'Ansible Tower does not currently have the capability to notify
-        administrators in the event of an audit processing failure. This
-        feature is being tracked in BugZilla:
+        'Red Hat Identity Management Administrators  are responsible for
+        alerting personnel or roles in the event of an audit processing
+        failure. A successful
+        control response will outline the process taken to alert personnel
+        when an auditing failure occurs.
 
-        https://github.com/ComplianceAsCode/redhat/issues/341'
+        Documentation/guidance on alerting administrators is being tracked
+        on GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/19'
     - key: b
       text: |
-        'Ansible Tower does not currently have the capability to take
-        an organizationally-defined action of shut down, overwrite,
-        or halting audit record generation. This feature is being
-        tracked in BugZilla:
+        'In the event of an audit processing failure, Red Hat Identity
+        Management Administrators
+        are responsible for: overwriting the oldest audit records for low
+        impact systems and shutting down moderate impact systems. A successful
+        control response will outline the actions taken when an auditing
+        failure occurs.
 
-        https://github.com/ComplianceAsCode/redhat/issues/342'
+        Documentation/guidance on achieving this control is being tracked
+        on GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/20'
 
 - control_key: AU-6
   standard_key: NIST-800-53
@@ -408,15 +252,16 @@ satisfies:
   narrative:
     - key: a
       text: |
-        'Ansible Tower relies on the time services
-        provided by the underlying operating system. Utilization of
-        platform-provided time services is default, non-configurable
-        behavior.'
+        'Red Hat Identity Management time keeping relies on the time services
+        provided by the underlying operating system. This control is not
+        applicable to the configuration of Red Hat Identity Management.'
 
     - key: b
       text: |
-        'Ansible Tower utilizes the time zone settings of the underlying
-        operating system. This is default, non-configurable behavior.'
+        'Red Hat Identity Management time keeping relies on the time
+        services provided by the
+        underlying operating system. This control is not applicable to the
+        configuration of Red Hat Identity Management.'
 
 - control_key: AU-9
   standard_key: NIST-800-53
@@ -424,21 +269,17 @@ satisfies:
   implementation_status: planned
   narrative:
     - text: |
-        'Ansible Tower logfiles have been consolidated and can be easily
-        accessed from two centralized locations:
+        'Customers are required to protect the audit information and audit
+        tools from unauthorized access, modification, and deletion. A successful
+        control response will discuss the way that audit information and tools
+        are protected. This can include how access is controlled to audit
+        information and tools.
 
-        - /var/log/tower/
-        - /var/log/supervisor/
+        Documentation/instructions on protecting Red Hat
+        Identity Management audit information
+        is being tracked in GitHub:
 
-        Each directory is protected by operating system-level
-        mandatory access control settings and require administrative (root)
-        privilege to access.
-
-        The ability to protect embedded log data, such as those
-        included in the Ansible Tower Activity Stream, is being
-        tracked on GitHub:
-
-        https://github.com/ComplianceAsCode/redhat/issues/343'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/21'
 
 - control_key: AU-11
   standard_key: NIST-800-53
@@ -446,11 +287,10 @@ satisfies:
   implementation_status: planned
   narrative:
     - text: |
-        'Ansible Tower currently does not have the capability to
-        retain audit records for an organizationally-defined time period.
+        'Documentation/instructions on audit retention is being tracked
+        in GitHub:
 
-        This capability is being tracked on GitHub:
-        http://ssptool.securitycentral.io/certifications/FedRAMP-low/NIST-800-53/AU-11'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/22'
 
 - control_key: AU-12
   standard_key: NIST-800-53
@@ -459,80 +299,20 @@ satisfies:
   narrative:
     - key: a
       text: |
-        'The following BugZillas track feature creation for Ansible Tower
-        to audit certain events:
+        'Customers are required to provide record generation capability for the
+        events defined in AU-2a at all information system components where audit
+        capability is available. A successful control response will discuss the
+        coniguration of all system components to capture the events that were
+        defined in AU-2.
 
-        - Audit Logons (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/345
+        Documentation/guidance on configuring auditable events is being
+        tracked on GitHub:
 
-        - Audit Logoff (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/346
-
-        - Audit File & Object Creation (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/347
-
-        - Audit File & Object Access (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/348
-
-        - Audit File & Object Deletion (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/349
-
-        - Audit File & Object Modification (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/350
-
-        - Audit File & Object Permission Changes (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/351
-
-        - Audit File & Object Ownership Modifications (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/352
-
-        - Audit User & Group Management Events, User add (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/448
-
-        - Audit User & Group Management Events, User delete (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/449
-
-        - Audit User & Group Management Events, User modify (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/450
-
-        - Audit User & Group Management Events, User suspend (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/451
-
-        - Audit User & Group Management Events, User lock (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/452
-
-        - Audit User & Group Management Events, Group/Role add (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/453
-
-        - Audit User & Group Management Events, Group/Role delete (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/454
-
-        - Audit User & Group Management Events, Group/Role modify (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/455
-
-        - Audit Use of Privileged/Special Rights, security or policy changes (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/456
-
-        - Audit Use of Privileged/Special Rights, configuration changes (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/457
-
-        - Audit Use of Privileged/Special Rights, Admin or root-level access (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/458
-
-        - Audit Privilege/Role Escalation (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/459
-
-        - Audit and Log Data Access (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/460
-
-        - Export of Information (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/461
-
-        - Import of Information (Success and Failure):
-        https://github.com/ComplianceAsCode/redhat/issues/462'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/23'
     - key: b
       text: |
-        'Customers are required to allow defined personnel or roles to select
+        '//*
+        Customers are required to allow defined personnel or roles to select
         which auditable events are to be audited by specific components of the
         information system. A successful control response will discuss how
         audit generation is implemented, and who selects and configures
@@ -542,7 +322,7 @@ satisfies:
         Documentation/guidance on satisfying this control is being
         tracked on GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/296'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/24'
     - key: c
       text: |
         'Customers are required to generate audit records for the events
@@ -553,7 +333,7 @@ satisfies:
         Documentation/guidance on satisfying this control is being
         tracked on GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/297'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/25'
 ##
 ## BEGINNING OF:
 ## SECURITY ASSESSMENT AND AUTHORIZATION
@@ -661,8 +441,8 @@ satisfies:
     - key: a
       text: |
         'This is an organizational control outside the scope of configuring
-        Ansible Tower. Use of the NIST National Checklist
-        for Ansible Tower is suggested as a supported,
+        Red Hat Identity Management. Use of the NIST National Checklist
+        for Red Hat Identity Management is suggested as a supported,
         US Government recognized, vendor supported, baseline.'
     - key: b
       text: |
@@ -671,14 +451,14 @@ satisfies:
         describe how mandatory configuration settings are implemented. This can
         include the process or documentation followed.
 
-        Creation of a Ansible Tower configuration baseline
+        Creation of a Red Hat Identity Management configuration baseline
         is being tracked on GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/299'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/40'
     - key: c
       text: |
         'This is an organizational control outside the scope of configuring
-        Ansible Tower.'
+        Red Hat Identity Management.'
     - key: d
       text: |
         'The customer will be responsible for monitoring and controlling
@@ -694,10 +474,10 @@ satisfies:
   implementation_status: planned
   narrative:
     - text: |
-        'Ensuring Ansible Tower is deployed in a minimal configuration
-        is being tracked through GitHub:
-
-        https://github.com/ComplianceAsCode/redhat/issues/300'
+        'Red Hat Identity Management provides many capabilities, including
+        user authentication, DNS integration, and several APIs. A successful
+        control response will outline which services are enabled
+        and their mission purpose.'
 
 - control_key: CM-8
   standard_key: NIST-800-53
@@ -770,7 +550,7 @@ satisfies:
 
         Guidance on establishing such backups is being tracked in GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/303'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/51'
     - key: b
       text: |
         'The customer will be responsible for conducting daily incremental and
@@ -784,7 +564,7 @@ satisfies:
 
         Guidance on establishing such backups is being tracked in GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/303'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/52'
     - key: c
       text: |
         'The customer will be responsible for conducting daily incremental and
@@ -797,7 +577,7 @@ satisfies:
         are maintained.
 
         Guidance on establishing such backups is being tracked in GitHub:
-        https://github.com/ComplianceAsCode/redhat/issues/303'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/53'
     - key: d
       text: |
         'The customer will be responsible for protecting the confidentiality,
@@ -809,7 +589,7 @@ satisfies:
         check.
 
         Guidance on establishing such backups is being tracked in GitHub:
-        https://github.com/ComplianceAsCode/redhat/issues/303'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/54'
 
 - control_key: CP-10
   standard_key: NIST-800-53
@@ -818,14 +598,10 @@ satisfies:
   narrative:
     - text: |
         'The customer will be responsible for documenting how to reconstitute
-        their Ansible Tower environment. A successful control
+        their Red Hat Identity Management environment. A successful control
         response will detail
-        processes used to fully recover/restore Ansible Tower.
-
-        Guidance on establishing such procedures is being tracked
-        on GitHub:
-
-        https://github.com/ComplianceAsCode/redhat/issues/302'
+        processes used to fully recover/restore the Red Hat Identity
+        Management environment.'
 ##
 ## BEGINNING OF:
 ## IDENTIFICATION AND AUTHENTICATION
@@ -840,16 +616,14 @@ satisfies:
 - control_key: IA-2
   standard_key: NIST-800-53
   covered_by: []
-  implementation_status: not applicable
+  implementation_status: planned
   narrative:
     - text: |
-        'Ansible Tower does not have the capability to uniquely identify and
-        authenticate organizational users (or processes acting on
-        behalf of organizational users).
+        'Documentation/guidance on configuring Red Hat
+        Identity Management against
+        this requirement is being tracked on GitHub:
 
-        To satisfy this control an external authentication service, such
-        as Red Hat IdM, must be used. This control is not applicable to
-        Ansible Tower when an external authentication service is used.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/61'
 
 - control_key: IA-2 (1)
   standard_key: NIST-800-53
@@ -865,7 +639,15 @@ satisfies:
         multifactor authentication is enforced for each.
 
         Documentation/guidance is being tracked through GitHub:
-        https://github.com/ComplianceAsCode/redhat/issues/305'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/62
+
+        NOTE:
+        Many customers are accepting password-enabled SSH keys as multi-
+        factor authentication. The SSH key (something they have) and the
+        decryption password (something they know). Prior to enabling CAC
+        and PIV cards, it is recommended to seek guidance from the
+        Information Security Officer responsible for authorization of
+        Red Hat Identity Management.'
 
 - control_key: IA-2 (12)
   standard_key: NIST-800-53
@@ -883,228 +665,140 @@ satisfies:
 
         Documentation/guidance for this control is being tracked on GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/306'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/63'
 
 - control_key: IA-4
   standard_key: NIST-800-53
   covered_by: []
-  implementation_status: not applicable
+  implementation_status: planned
   narrative:
     - key: a
       text: |
         'This is an organizational control outside the scope of configuring
-        Ansible Tower.'
+        Red Hat Identity Management.'
     - key: b
       text: |
         'This is an organizational control outside the scope of configuring
-        Ansible Tower.'
+        Red Hat Identity Management.'
     - key: c
       text: |
         'This is an organizational control outside the scope of configuring
-        Ansible Tower.'
+        Red Hat Identity Management.'
     - key: d
       text: |
-        'Ansible Tower does not have the capability to prevent the
-        reuse of identifiers for an organizationally-defined time period.
+        'Documentation/guidance on preventing the reuse of identifiers is
+        being tracked on GitHub:
 
-        To satisfy this control an external authentication service, such
-        as Red Hat IdM, must be used. This control is not applicable to
-        Ansible Tower when an external authentication service is used.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/64'
     - key: e
       text: |
-        'Ansible Tower does not have the capability to disable an identifier
-        after an organizationally-defined time period of inactivity.
+        'Documentation/guidance on disabling idle accounts is being tracked
+        on GitHub:
 
-        To satisfy this control an external authentication service, such
-        as Red Hat IdM, must be used. This control is not applicable to
-        Ansible Tower when an external authentication service is used.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/65'
 
 - control_key: IA-5
   standard_key: NIST-800-53
   covered_by: []
-  # NOTE: Because sub keys cannot have their own implementation_status,
-  # using 'complete' to indicate overall satisfaction of requirements,
-  # even if certain sub keys are not applicable.
-  implementation_status: complete
+  implementation_status: planned
   narrative:
     - key: a
       text: |
         'This is an organizational control outside the scope of configuring
-        Ansible Tower.'
+        Red Hat Identity Management.'
     - key: b
       text: |
-        'Ansible Tower does not have the capability to establish initial
-        authenticator content for authenticators defined by the organization
-        (e.g. complexity requirements in IA-4).
+        'Documentation/guidance on how to configure initial authenticator
+        metadata is being tracked on GitHub:
 
-        To satisfy this control an external authentication service, such
-        as Red Hat IdM, must be used. This control is not applicable to
-        Ansible Tower when an external authentication service is used.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/66'
     - key: c
       text: |
-        'Ansible Tower does not have the capability to ensure that
-        authenticators have sufficient strength of mechanism for their
-        intended use.
+        'Documentation/guidance on ensuring authenticators have sufficient
+        strenth of mechanism for their purpose is being tracked on GitHub:
 
-        To satisfy this control an external authentication service, such
-        as Red Hat IdM, must be used. This control is not applicable to
-        Ansible Tower when an external authentication service is used.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/67'
     - key: d
       text: |
-        'This is an organizational control outside the scope of configuring
-        Ansible Tower.'
+        'Documentation/guidance for this control is being tracked on GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/68'
     - key: e
       text: |
-        'Ansible Tower does not have default account authenticators.
-        Authenticators used during the installation of Ansible Tower,
-        such as passwords for the embeded database, are created by the
-        system administratur during the Ansible Tower installation.
-        This is non-configurable behavior.
+        'Documentation/guidance for this control is being tracked on GitHub:
 
-        This requirement is not applicable to the
-        configuration of Ansible Tower.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/69'
     - key: f
       text: |
-        'Ansible Tower does not have the capability to establish
-        minimum and maximum lifetime restrictions and reuse
-        conditions for authenticators.
+        'Guidance/documentation for establishing minimum/maximum lifetime
+        restrictions and reuse conditions for authenticators is being
+        tracked on GitHub:
 
-        To satisfy this control an external authentication service,
-        such as Red Hat IdM, must be used. This control is not
-        applicable to Ansible Tower when an external authentication
-        service is used.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/70'
     - key: g
       text: |
-        'Ansible Tower does not have the capability to change/refresh
-        authenticators after an organizationally-defined time period
-        by authenticator type.
+        'Guidance on changing/refreshing authenticators after an
+        organizationally-defined time period is being tracked on GitHub:
 
-        To satisfy this control an external authentication service,
-        such as Red Hat IdM, must be used. This control is not
-        applicable to Ansible Tower when an external authentication
-        service is used.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/71'
     - key: h
       text: |
-        'Ansible Tower uses SSH to connect to remote hosts (or the Windows
-        equivalent). In order to pass the key from Tower to SSH, the key must
-        be decrypted before it can be written to a named pipe. Tower then uses
-        that pipe to send the key to SSH (so that it is never written to disk).
+        'Documentation/guidance for this control is being tracked on
+        GitHub:
 
-        If passwords are used, Ansible Tower handles those by responding
-        directly to the password prompt and decrypting the password before
-        writing it to the prompt.
-
-        The encryption/decryption algorithm uses a variation of Fernet: a
-        symmetric encryption cipher utilizing AES-256 in CBC mode alongside
-        a SHA-256 HMAC. Specific, sensitive, Model fields in Tower are
-        encrypted and include:
-
-        CREDENTIAL
-          - password
-          - ssh_key_data
-          - ssh_key_unlock
-          - become_password
-          - vault_password
-
-        UNIFIED JOB:
-          - start_args
-
-        Data is encrypted before it is saved to the database and it is
-        decrypted as needed in Tower. The encryption/decryption process
-        derives the AES-256 bit encryption key from
-        <SECRET_KEY, field_name, primary_key> where field_name is the
-        field_name of the Model field and primary_key is the database assigned
-        auto-incremented record ID. Thus, if any attribute used in the key
-        generation process changes, Tower fails to correctly decrypt the
-        secret.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/72'
     - key: i
       text: |
-        'This is an organizational control outside the scope of configuring
-        Ansible Tower.'
+        'Documentation/guidance for this control is being tracked on
+        GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/73'
     - key: j
       text: |
         'This is an organizational control outside the scope of configuring
-        Ansible Tower.'
+        Red Hat Identity Management.'
 
 - control_key: IA-5 (1)
   standard_key: NIST-800-53
   covered_by: []
-  # NOTE: Because sub keys cannot have their own implementation_status,
-  # using 'complete' to indicate overall satisfaction of requirements,
-  # even if certain sub keys are not applicable.
-  implementation_status: complete
+  implementation_status: planned
   narrative:
     - key: a
       text: |
-        'Ansible Tower does not have the capability to enforce minimum
-        password complexity requirements.
+        'Documentation/guidance on implementing password complexity
+        is being tracked on GitHub:
 
-        To satisfy this control an external authentication service, such
-        as Red Hat IdM, must be used. This control is not applicable to
-        Ansible Tower when an external authentication service is used.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/74'
     - key: b
       text: |
-        'Ansible Tower does not have the capability to enforce at least
-        an organizationally-defined number of characters be changed
-        when new passwords are created.
+        'Documentation/guidance on implementing changed characters during
+        password creation is being tracked on GitHub:
 
-        To satisfy this control an external authentication service, such
-        as Red Hat IdM, must be used. This control is not applicable to
-        Ansible Tower when an external authentication service is used.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/75'
     - key: c
       text: |
-        'If passwords are used, Ansible Tower handles those by responding
-        directly to the password prompt and decrypting the password before
-        writing it to the prompt.
+        'Documentation/guidance on storing and transmitting only
+        cryptographically-protected passwords is being tracked on GitHub:
 
-        The encryption/decryption algorithm uses a variation of Fernet: a
-        symmetric encryption cipher utilizing AES-256 in CBC mode alongside
-        a SHA-256 HMAC. Specific, sensitive, Model fields in Tower are
-        encrypted and include:
-
-        CREDENTIAL
-          - password
-          - ssh_key_data
-          - ssh_key_unlock
-          - become_password
-          - vault_password
-
-        UNIFIED JOB:
-          - start_args
-
-        Data is encrypted before it is saved to the database and it is
-        decrypted as needed in Tower. The encryption/decryption process
-        derives the AES-256 bit encryption key from
-        <SECRET_KEY, field_name, primary_key> where field_name is the
-        field_name of the Model field and primary_key is the database assigned
-        auto-incremented record ID. Thus, if any attribute used in the key
-        generation process changes, Tower fails to correctly decrypt the
-        secret.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/76'
     - key: d
       text: |
-        'Ansible Tower does not have the capability to enforce password
-        minimum and maximum lifetime restrictions.
+        'Documentation/guidance on enforcing password minimum and maximum
+        lifetime restrictions is being tracked on GitHub:
 
-        To satisfy this control an external authentication service, such
-        as Red Hat IdM, must be used. This control is not applicable to
-        Ansible Tower when an external authentication service is used.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/77'
     - key: e
       text: |
-        'Ansible Tower does not have the capability prohibit password
-        reuse.
+        'Documentation/guidance on enforcing password minimum and maximum
+        lifetime restrictions is being tracked on GitHub:
 
-        To satisfy this control an external authentication service, such
-        as Red Hat IdM, must be used. This control is not applicable to
-        Ansible Tower when an external authentication service is used.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/78'
     - key: f
       text: |
-        'Ansible Tower does not have the capability allow the use of a
-        temporary password for system logons with an immediate change
-        to a permanent password.
+        'Documentation/guidance on enforcing an immediate change to temporary
+        passwords is being tracked on GitHub:
 
-        To satisfy this control an external authentication service, such
-        as Red Hat IdM, must be used. This control is not applicable to
-        Ansible Tower when an external authentication service is used.'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/79'
 
 - control_key: IA-5 (11)
   standard_key: NIST-800-53
@@ -1119,9 +813,9 @@ satisfies:
   implementation_status: complete
   narrative:
     - text: |
-        'Ansible Tower natively obscures such information.
-        Ansible Tower cannot be configured to be out of
-        compliance with this requirement.'
+        'Red Hat Identity Management natively obscures such information.
+        Red Hat Identity Management cannot be
+        configured to be out of compliance with this requirement.'
 
 - control_key: IA-7
   standard_key: NIST-800-53
@@ -1129,28 +823,33 @@ satisfies:
   implementation_status: planned
   narrative:
     - text: |
-        'The customer will be responsible for configuring Ansible Tower to use
+        'The customer will be responsible for configuring Red Hat Identity
+        Management to use
         appropriate cryptographic modules. A successful control response will
         document what modules are in use, how to attest the configuration is
         in place, and references to supporing documentation outlining the
         FIPS 140-2 certification for enabled modules.
 
         Documentation to satisfy this control is being tracked on GitHub:
-        https://github.com/ComplianceAsCode/redhat/issues/326'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/81'
 
 - control_key: IA-8
   standard_key: NIST-800-53
   covered_by: []
-  implementation_status: not applicable
+  implementation_status: planned
   narrative:
     - text: |
-        'Ansible Tower does not have the capability to uniquely
-        identify and authenticate non-organizational users (or
-        processes acting on behalf of non-organizational users).
+        'The customer will be responsible for identifying and authenticating
+        non-organizational users accessing the customer application. A
+        successful control response will need to address how non-organizational
+        users are defined and the process by which identification
+        and authentication takes place, including any differences from
+        identification and authentication for organizational users.
 
-        To satisfy this control an external authentication service, such
-        as Red Hat IdM, must be used. This control is not applicable to
-        Ansible Tower when an external authentication service is used.'
+        Documentation on how to satisfy this control is being
+        tracked on GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/82'
 
 - control_key: IA-8 (1)
   standard_key: NIST-800-53
@@ -1169,7 +868,7 @@ satisfies:
         Documentation on satisfying this control is being tracked on
         GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/328'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/82'
 
 - control_key: IA-8 (2)
   standard_key: NIST-800-53
@@ -1189,7 +888,7 @@ satisfies:
         Documentation/guidance for this control is being tracked
         on GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/329'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/84'
 
 - control_key: IA-8 (3)
   standard_key: NIST-800-53
@@ -1209,7 +908,7 @@ satisfies:
         Documentation/guidance for this control is being tracked via
         GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/330'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/85'
 
 - control_key: IA-8 (4)
   standard_key: NIST-800-53
@@ -1229,7 +928,7 @@ satisfies:
         Documentation/guidance for this control is being developed on
         GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/331'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/86'
 ##
 ## BEGINNING OF:
 ## INCIDENT RESPONSE
@@ -1717,20 +1416,38 @@ satisfies:
 - control_key: SC-5
   standard_key: NIST-800-53
   covered_by: []
-  implementation_status: planned
+  implementation_status: not applicableß
   narrative:
-    - text: |
-        'Documentation of anti-dential of service capabilities is being
-        tracked on GitHub:
-
-        https://github.com/ComplianceAsCode/redhat/issues/333'
+    - text: ''
 
 - control_key: SC-7
   standard_key: NIST-800-53
   covered_by: []
-  implementation_status: not applicable
+  implementation_status: planned
   narrative:
-    - text: ''
+    - key: a
+      text: |
+        'Documentation on how communications at key internal boundaries of
+        Red Hat Identity Management can be monitored is forthcoming.
+        This activity is being tracked in GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/142'
+    - key: b
+      text: |
+        'Documentation regarding how Red Hat Identity Management can
+        implement subnetworks
+        for publicly accessible system components is forthcoming. This
+        activity is being tracked in GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/143'
+    - key: c
+      text: |
+        'Documentation regarding how Red Hat Identity Management can route
+        connections to external
+        systems through a managed interface is forthcoming. This
+        activity is being trackedin GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/144'
 
 - control_key: SC-12
   standard_key: NIST-800-53
@@ -1738,12 +1455,12 @@ satisfies:
   implementation_status: planned
   narrative:
     - text: |
-        'Documentation regarding how Ansible Tower generates,
+        'Documentation regarding how Red Hat Identity Management generates,
         distributes, stores,
         accesses, and desctructs, cryptographic keys is forthcoming. This
         activity is being tracked in GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/334'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/145'
 
 - control_key: SC-13
   standard_key: NIST-800-53
@@ -1751,43 +1468,61 @@ satisfies:
   implementation_status: planned
   narrative:
     - text: |
-        'Documentation regarding Ansible Tower's usage of
+        'Documentation regarding Red Hat Identity Management's usage of
         cryptography and applicability to Federal laws is forthcoming. This
         activity is being tracked in GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/335'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/146'
 
 - control_key: SC-15
   standard_key: NIST-800-53
   covered_by: []
   implementation_status: not applicable
   narrative:
-    - text: |
-        ''
+    - text: ''
 
 - control_key: SC-20
   standard_key: NIST-800-53
   covered_by: []
-  implementation_status: not applicable
+  implementation_status: planned
   narrative:
-    - text: |
-        ''
+    - key: a
+      text: |
+        'Documentation on how to configure Red Hat Identity Management DNS services to provide
+        data origin authentication and integrity verification is forthcoming.
+        That activity is being tracked GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/147'
+    - key: b
+      text: |
+        'Documentation on how to configure this functionality within
+        Red Hat Identity Management is forthcoming. This activity is being tracked in
+        GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/148'
 
 - control_key: SC-21
   standard_key: NIST-800-53
   covered_by: []
-  implementation_status: not applicable
+  implementation_status: planned
   narrative:
     - text: |
-        ''
+        'Documentation on enabling DNSSEC within Red Hat Identity Management is forthcoming. This
+        activity is being tracked in GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/149'
 
 - control_key: SC-22
   standard_key: NIST-800-53
   covered_by: []
-  implementation_status: not applicable
+  implementation_status: planned
   narrative:
     - text: |
-        ''
+        'Documentation on creating fault-tolerant DNS configurations within
+        Red Hat Identity Management is forthcoming. This activity is being
+        tracked in GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/150'
 
 - control_key: SC-39
   standard_key: NIST-800-53
@@ -1795,11 +1530,15 @@ satisfies:
   implementation_status: planned
   narrative:
     - text: |
-        'Documentation on ensuring this functionality is
-        configured is forthcoming.
+        'When Red Hat Identity Management runs on Red Hat Enterprise Linux,
+        Red Hat Identity Management maintains separate execution domains for
+        each executing process by
+        assigning a private virtual address space to each process.
+
+        Documentation on ensuring this functionality is configured is forthcoming.
         This activity is being tracked in GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/336'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/151'
 ##
 ## BEGINNING OF:
 ## SYSTEM AND INFORMATION INTEGRITY
@@ -1814,16 +1553,75 @@ satisfies:
 - control_key: SI-2
   standard_key: NIST-800-53
   covered_by: []
-  implementation_status: not applicable
+  implementation_status: planned
   narrative:
-    text: ''
+    - key: a
+      text: |
+        'The customer will be responsible for analyzing their
+        Red Hat Identity Management deployment for
+        flaws, reporting on those flaws, and correcting them. A successful
+        control response will include a discussion of the process by which
+        flaws are discovered and remediated, as well as tools that are used to
+        assist in detection and remediation.
+
+        Documentation of the overall process of vulnerability identification to
+        patching is forthcoming. This work is being tracked in GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/155'
+    - key: b
+      text: |
+        'The customer will be responsible for testing
+        Red Hat Identity Management updates
+        related to flaw remediation prior to installation. A successful
+        control response will discuss the testing process (e.g. the
+        nature of the test environment, the types of testing performed,
+        the tools in testing, etc.).
+
+        Documentation regarding suggested testing procedures is forthcoming.
+        This work is being tracked in GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/156'
+    - key: c
+      text: |
+        'This control reflects organizational procedures/policies, and is not
+        applicable to the configuration of Red Hat Identity Management.'
+    - key: d
+      text: |
+        'This control reflects organizational procedures/policies, and is not
+        applicable to the configuration of Red Hat Identity Management.'
 
 - control_key: SI-3
   standard_key: NIST-800-53
   covered_by: []
-  implementation_status: not applicable
+  implementation_status: planned
   narrative:
-    text: ''
+    - key: a
+      text: |
+        'The customer is responsible for ensuring that they employ malicious
+        code protection at information system entry, and exit points to detect
+        and eradicate malicious code. A successful control response will need
+        to address use of code protection mechanisms to protect assets from
+        malicious software (i.e. Viruses, malware, rootkits, worms, and
+        scripts). In regards to Red Hat Identity Management,
+        this is generally through
+        integrating third party tools into CI/CD pipelines.
+
+        Documentation and suggested integration procedures are forthcoming.
+        This work is being tracked in GitHub:
+
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/158'
+    - key: b
+      text: |
+        'This control reflects organizational procedures/policies, and is not
+        applicable to the configuration of Red Hat Identity Management.'
+    - key: c
+      text: |
+        'In the scope of Red Hat Identity Management, this control is
+        duplicative of SI-3(a).'
+    - key: d
+      text: |
+        'This control reflects organizational procedures/policies, and is not
+        applicable to the configuration of Red Hat Identity Management.'
 
 - control_key: SI-4
   standard_key: NIST-800-53
@@ -1846,7 +1644,7 @@ satisfies:
   narrative:
     - text: |
         'The customer will be responsible for handling and retaining
-        information within, or hosted by, Ansible Tower in
+        information within, or hosted by, Red Hat Identity Management in
         accordance with applicable federal laws, Executive Orders,
         directives, policies, regulations, standards, and operational
         requirements. A successful control response will need to outline
@@ -1855,15 +1653,19 @@ satisfies:
         are met.
 
         Documentation and suggestions on protecting customer information
-        hosted within the Ansible Tower environment
+        hosted within the Red Hat Identity Management environment
         is forthcoming. This activity
         is being tracked in GitHub:
 
-        https://github.com/ComplianceAsCode/redhat/issues/337'
+        https://github.com/ComplianceAsCode/redhat-identity-management/issues/159'
 
 - control_key: SI-16
   standard_key: NIST-800-53
   covered_by: []
   implementation_status: not applicable
   narrative:
-    - text: ''
+    - text: |
+        'Red Hat Red Hat Identity Management Container Platform
+        inherits memory protections
+        provided by the underlying operating system. This control is not
+        applicable to Red Hat Red Hat Identity Management Container Platform.'
